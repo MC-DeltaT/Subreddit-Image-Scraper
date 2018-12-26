@@ -1,0 +1,22 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	
+	"type": "object",
+	
+	"properties": {
+		"output_directory": {
+			"type": "string"
+		},
+		"post_filters": {
+			"type": "object",
+			"additionalProperties": {
+				"type": "string"
+			}
+		}
+	},
+	
+	"required": [
+		"output_directory",
+		"post_filters"
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	
+	"type": "object",
+	
+	"properties": {
+		"client_id": {
+			"type": "string"
+		},
+		"client_secret": {
+			"type": "string"
+		},
+		"user_agent": {
+			"type": "string"
+		},
+		"post_limit": {
+			"type": "number"
+		},
+		"subreddits": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	},
+	
+	"required": [
+		"client_id",
+		"client_secret",
+		"user_agent",
+		"post_limit",
+		"subreddits"
+	]
+}

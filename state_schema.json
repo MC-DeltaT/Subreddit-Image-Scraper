@@ -1,0 +1,18 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	
+	"type": "object",
+	
+	"properties": {
+		"latest_handled_times": {
+			"type": "object",
+			"additionalProperties": {
+				"type": "number"
+			}
+		}
+	},
+	
+	"required": [
+		"latest_handled_times"
+	]
+}
