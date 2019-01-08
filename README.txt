@@ -68,9 +68,11 @@ Configuration:
 				subreddits - an array of strings specifying the names of the subreddits to get posts from.
 		handler_config.json:
 			Configuration pertaining to the handling of posts. Required properties are:
-				output_directory - a string specifying the path of the directory to save the downloaded images to.
+				output_directory - a string specifying the path of the directory to save the downloaded images to. If it is a relative path, it is
+								   relative to <config_dir>.
 				post_filters - an object mapping a subreddit name to a string specfying the path of a Python module to be used as a post filter for
-							   that subreddit (see section "Post filtering" for more info).
+							   that subreddit (see section "Post filtering" for more info). If a path is a relative path, it is relative to
+							   <config_dir>.
 	For a more formal description of the required data read the respective _schema.json files, which are used by the application to validate the
 	configuration data.
 

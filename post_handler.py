@@ -75,6 +75,12 @@ if len(_errors) > 0:
 		_logger.error(_e)
 	sys.exit(1)
 
+	
+if os.path.isabs(_config["output_directory"]):
+	_output_directory = _config["output_directory"]
+else:
+	_output_directory = os.path.join(sys.argv[1], _config["output_directory"])
+
 
 _image_extensions = { "image/jpeg": ".jpg",
 				      "image/png": ".png" }
@@ -82,7 +88,7 @@ _image_extensions = { "image/jpeg": ".jpg",
 
 def _save_image(data, file_extension):
 	while True:
-		file_path = os.path.join(_config["output_directory"], uuid.uuid4().hex + file_extension)
+		file_path = os.path.join(_output_directory, uuid.uuid4().hex + file_extension)
 		_logger.debug("Writing image to {}".format(file_path))
 
 		try:
@@ -145,6 +151,9 @@ def _global_filter(post, subreddit_name):
 def _subreddit_filter(post, subreddit_name):
 	filter_path = _config["post_filters"].get(subreddit_name)
 	if filter_path is not None:
+		if not os.path.isabs(filter_path):
+			filter_path = os.path.join(sys.argv[1], filter_path)
+	
 		filter_dir, filter_name = os.path.split(filter_path)
 		filter_name = os.path.splitext(filter_name)[0]
 		if filter_dir not in sys.path:
